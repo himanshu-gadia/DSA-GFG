@@ -1,0 +1,48 @@
+class Solution {
+    // Function to connect nodes at same level.
+    public Node connect(Node root) {
+        
+       function(root);
+        
+        return root;
+    }
+    
+    public void function(Node root){
+        Stack<Node> s1 = new Stack<Node>();
+        Stack<Node> s2 = new Stack<Node>();
+        
+        s1.add(root);
+        Node levelWiseLinkedList = new Node(-1);
+        
+        while(s1.size()!=0 || s2.size()!=0){
+            while(s1.size()!=0){
+                Node temp = s1.pop();
+                
+                if(temp.left!=null){
+                    s2.push(temp.left);
+                }
+                
+                if(temp.right!=null){
+                    s2.push(temp.right);
+                }
+                
+                levelWiseLinkedList.nextRight = temp;
+                levelWiseLinkedList = levelWiseLinkedList.nextRight;
+                
+                if(s1.size()==0){
+                    levelWiseLinkedList.nextRight = null;
+                }
+                //System.out.println(temp.data);
+                
+            }
+            while(s2.size()!=0){
+               Node stackTemp = s2.pop();
+               s1.push(stackTemp);
+               
+               levelWiseLinkedList = new Node(-1);
+               
+            }
+        }
+        
+    }
+}
